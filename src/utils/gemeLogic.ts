@@ -27,3 +27,10 @@ export function addRandomTile(board: Board): Board {
 
   return newBoard;
 }
+
+export function createInitialBoard(): Board {
+  let board = createEmptyBoard();
+  board = addRandomTile(board);
+  board = addRandomTile(board);
+  return board;
+}
