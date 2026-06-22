@@ -1,3 +1,5 @@
+import Tile from './Tile';
+
 type Board = number[][];
 
 interface BoardProps {
@@ -9,12 +11,10 @@ function Board({ board }: BoardProps) {
     <div className="board">
       {board.map((row, rowIndex) =>
         row.map((value, colIndex) => (
-          <div
+          <Tile
             key={`${rowIndex}-${colIndex}`}
-            className="cell"
-          >
-            {value !== 0 ? value : ''}
-          </div>
+            value={value}
+          />
         )),
       )}
     </div>
