@@ -28,6 +28,7 @@ export function addRandomTile(board: Board): Board {
   return newBoard;
 }
 
+// ゲーム開始時のボードを作る（タイルを2つ追加）
 export function createInitialBoard(): Board {
   let board = createEmptyBoard();
   board = addRandomTile(board);
