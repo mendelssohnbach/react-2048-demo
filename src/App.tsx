@@ -1,18 +1,24 @@
-interface TileProps {
-  value: number;
-}
+import { useState } from 'react';
 
-function Tile({ value }: TileProps) {
-  return <div style={{ border: '1px solid black', padding: '10px', margin: '5px' }}>{value}</div>;
-}
+function Counter() {
+  const [count, setCount] = useState<number>(0);
 
-export default function App() {
   return (
     <div>
-      <h1>2048</h1>
-      <Tile value={2} />
-      <Tile value={4} />
-      <Tile value={8} />
+      <p>カウント: {count}</p>
+      <button onClick={() => setCount(count + 1)}>増やす</button>
+      <button onClick={() => setCount(0)}>リセット</button>
     </div>
   );
 }
+
+function App() {
+  return (
+    <div>
+      <h1>カウンター</h1>
+      <Counter />
+    </div>
+  );
+}
+
+export default App;
