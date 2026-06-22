@@ -64,3 +64,24 @@ function slideRowLeft(row: number[]): { row: number[]; gained: number } {
 
   return { row: tiles, gained };
 }
+
+export function moveLeft(board: Board): MoveResult {
+  let totalGained = 0;
+  const newBoard = board.map((row) => {
+    const { row: newRow, gained } = slideRowLeft(row);
+    totalGained += gained;
+    return newRow;
+  });
+  return { board: newBoard, gained: totalGained };
+}
+
+export function moveRight(board: Board): MoveResult {
+  let totalGained = 0;
+  const newBoard = board.map((row) => {
+    const reversed = [...row].reverse();
+    const { row: slid, gained } = slideRowLeft(reversed);
+    totalGained += gained;
+    return slid.reverse();
+  });
+  return { board: newBoard, gained: totalGained };
+}
