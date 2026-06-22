@@ -1,3 +1,8 @@
+export interface MoveResult {
+  board: Board;
+  gained: number;
+}
+
 export type Board = number[][];
 
 // 空のボード（4×4、すべて0）を作る
