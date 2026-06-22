@@ -1,3 +1,4 @@
+import './App.css';
 import Board from './components/Board';
 
 type Board = number[][];
