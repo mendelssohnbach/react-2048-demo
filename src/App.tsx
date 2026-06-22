@@ -1,20 +1,23 @@
+import { useState } from 'react';
 import './App.css';
 import Board from './components/Board';
-
-type Board = number[][];
-
-const initialBoard: Board = [
-  [0, 0, 2, 0],
-  [0, 4, 0, 0],
-  [0, 0, 0, 8],
-  [2, 0, 0, 0],
-];
+import { createInitialBoard } from './utils/gameLogic';
 
 function App() {
+  const [board, setBoard] = useState(() => createInitialBoard());
+  const [score, setScore] = useState<number>(0);
+
+  const handleRestart = () => {
+    setBoard(createInitialBoard());
+    setScore(0);
+  };
+
   return (
-    <div>
+    <div className="game-container">
       <h1>2048</h1>
-      <Board board={initialBoard} />
+      <p>スコア：{score}</p>
+      <button onClick={handleRestart}>リスタート</button>
+      <Board board={board} />
     </div>
   );
 }
