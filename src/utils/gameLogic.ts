@@ -85,3 +85,7 @@ export function moveRight(board: Board): MoveResult {
   });
   return { board: newBoard, gained: totalGained };
 }
+
+export function transpose(board: Board): Board {
+  return board[0].map((_, colIndex) => board.map((row) => row[colIndex]));
+}
