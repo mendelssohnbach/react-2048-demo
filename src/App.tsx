@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import Board from './components/Board';
+
+type Board = number[][];
+
+const initialBoard: Board = [
+  [0, 0, 2, 0],
+  [0, 4, 0, 0],
+  [0, 0, 0, 8],
+  [2, 0, 0, 0],
+];
 
 function App() {
-  const [tiles, setTiles] = useState<number[]>([2, 4, 8, 16]);
-
-  const addTile = () => {
-    setTiles([...tiles, 32]);
-  };
-
   return (
     <div>
-      <p>{tiles.join(', ')}</p>
-      <button onClick={addTile}>タイルを追加</button>
+      <h1>2048</h1>
+      <Board board={initialBoard} />
     </div>
   );
 }
