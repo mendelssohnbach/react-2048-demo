@@ -1,22 +1,34 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Board from './components/Board';
-import { addRandomTile, createInitialBoard, moveLeft, moveRight } from './utils/gameLogic';
+import {
+  addRandomTile,
+  createInitialBoard,
+  moveDown,
+  moveLeft,
+  moveRight,
+  moveUp,
+  type Board as BoardType,
+  type MoveResult,
+} from './utils/gameLogic';
 
 function App() {
   const [board, setBoard] = useState(() => createInitialBoard());
   const [score, setScore] = useState<number>(0);
 
   useEffect(() => {
+    const moves: Record<string, (board: BoardType) => MoveResult> = {
+      ArrowLeft: moveLeft,
+      ArrowRight: moveRight,
+      ArrowUp: moveUp,
+      ArrowDown: moveDown,
+    };
     const handleKeyDown = (e: KeyboardEvent) => {
-      let result = null;
-
-      if (e.key === 'ArrowLeft') result = moveLeft(board);
-      if (e.key === 'ArrowRight') result = moveRight(board);
-
-      if (!result) return;
+      const moveFn = moves[e.key];
+      if (!moveFn) return;
 
       e.preventDefault();
+      const result = moveFn(board);
       const newBoard = addRandomTile(result.board);
       setBoard(newBoard);
       setScore((prev) => prev + result.gained);
