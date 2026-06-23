@@ -1,24 +1,112 @@
+/* ページ全体 */
+body {
+  margin: 0;
+  background-color: #faf8ef;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ゲーム全体のコンテナ */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* タイトル */
+h1 {
+  font-size: 64px;
+  font-weight: bold;
+  color: #776e65;
+  margin: 0;
+}
+
+/* スコア表示 */
+.score-box {
+  background-color: #bbada0;
+  color: #f9f6f2;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.score-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* リスタートボタン */
+button {
+  background-color: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7a6657;
+}
+
+/* ゲームボード */
 .board {
   display: grid;
-  grid-template-columns: repeat(4, 80px);
-  grid-template-rows: repeat(4, 80px);
-  gap: 8px;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+  gap: 12px;
   background-color: #bbada0;
-  padding: 8px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
   width: fit-content;
 }
 
+/* 各マス（空きマス） */
 .cell {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #cdc1b4;
+  background-color: rgba(238, 228, 218, 0.35);
   border-radius: 4px;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
 }
 
+/* 数字のあるタイル */
 .tile {
   transition: background-color 0.1s ease;
+}
+
+/* ゲームオーバー表示 */
+.game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(238, 228, 218, 0.73);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.game-over p {
+  font-size: 48px;
+  font-weight: bold;
+  color: #776e65;
+  margin: 0;
+}
+
+/* ボード周辺のラッパー（ゲームオーバーのoverlay用） */
+.board-wrapper {
+  position: relative;
 }
