@@ -59,7 +59,11 @@ function App() {
   return (
     <div className="game-container">
       <h1>2048</h1>
-      <p>スコア：{score}</p>
+      <div className="score-box">
+        <div className="score-label">
+          <div>{score}</div>
+        </div>
+      </div>
       <button onClick={handleRestart}>リスタート</button>
       {gameOver && (
         <div className="game-over">
