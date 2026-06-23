@@ -27,11 +27,12 @@ function Tile({ value }: TileProps) {
   if (value === 0) return <div className="cell" />;
 
   const style = TILE_COLORS[value] ?? DEFAULT_TILE_STYLE;
+  const fontSize: string = value >= 1024 ? '20px' : value >= 128 ? '24px' : '28px';
 
   return (
     <div
       className="cell tile"
-      style={{ backgroundColor: style.background, color: style.color }}
+      style={{ backgroundColor: style.background, color: style.color, fontSize }}
     >
       {value}
     </div>
