@@ -128,3 +128,12 @@ export function isGameOver(board: Board): boolean {
 
   return true;
 }
+
+export function boardsEqual(a: Board, b: Board): boolean {
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 4; c++) {
+      if (a[r][c] !== b[r][c]) return false;
+    }
+  }
+  return true;
+}
