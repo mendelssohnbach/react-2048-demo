@@ -103,3 +103,28 @@ export function moveDown(board: Board): MoveResult {
 
   return { board: transpose(moved), gained };
 }
+
+export function isGameOver(board: Board): boolean {
+  // 空きマスがあればまだ続けられる
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 4; c++) {
+      if (board[r][c] === 0) return false;
+    }
+  }
+
+  // 横方向に隣り合う同じ数字があれば続けられる
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 3; c++) {
+      if (board[r][c] === board[r][c + 1]) return false;
+    }
+  }
+
+  // 縦方向に隣り合う同じ数字があれば続けられる
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 4; c++) {
+      if (board[r][c] === board[r + 1][c]) return false;
+    }
+  }
+
+  return true;
+}
